@@ -17,6 +17,8 @@ jobs:
       with:
         python-version: 3.x
         architecture: x64
-    - uses: actions/aws
+    - name: List Actions
+      run: ls -l /home/runner/work/_actions/actions/
+    - uses: actions/aws@master
     - name: Run
       run: python --version
