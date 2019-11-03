@@ -20,5 +20,10 @@ jobs:
     - name: List Actions
       run: ls -l /home/runner/work/_actions/actions/
     - uses: actions/aws/cli@master
-    - name: Run
-      run: python --version
+    - name: Install Ansible
+      run: |
+        sudo apt-add-repository ppa:ansible/ansible
+        sudo apt update
+        sudo apt install ansible
+    - name: Build
+      run: ansible-playbook demo_setup.yml
