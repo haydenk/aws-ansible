@@ -1,3 +1,5 @@
+name: AWS Ansible Testing
+
 on:
   push:
     branches:
@@ -15,6 +17,6 @@ jobs:
       with:
         python-version: 3.x
         architecture: x64
-    - uses: actions/aws@master
+    - uses: actions/aws
     - name: Run
       run: python --version
