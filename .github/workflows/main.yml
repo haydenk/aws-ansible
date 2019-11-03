@@ -19,6 +19,6 @@ jobs:
         architecture: x64
     - name: List Actions
       run: ls -l /home/runner/work/_actions/actions/
-    - uses: actions/aws@master
+    - uses: actions/aws/cli@master
     - name: Run
       run: python --version
