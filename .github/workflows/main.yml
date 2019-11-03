@@ -20,13 +20,14 @@ jobs:
     - name: List Actions
       run: ls -l /home/runner/work/_actions/actions/
     - uses: actions/aws/cli@master
-      env: # Or as an environment variable
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: Install Ansible
       run: |
         sudo apt-add-repository ppa:ansible/ansible
-        sudo apt update
-        sudo apt install ansible
+        sudo apt-get update
+        sudo apt-get install -y ansible
+    - name: Setup AWS Credentials
+      run: |
+        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: Build
       run: aws s3 ls
